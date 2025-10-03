@@ -1,143 +1,559 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Innovative Solutions Initiative - Donate Today</title>
-    
-    <meta name="description" content="Innovative Solutions Initiative - Working to solve community challenges through creative projects and partnerships. Support our mission today.">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Innovative Solutions Initiative (ISI)</title>
+        <meta
+            name="description"
+            content="ISI is building an intelligent, secure, and connected platform that unifies healthcare, education, and human services for children and families."
+        />
+        <meta
+            property="og:title"
+            content="Innovative Solutions Initiative (ISI)"
+        />
+        <meta
+            property="og:description"
+            content="Unified care. Smarter tools. Better lives."
+        />
+        <meta property="og:type" content="website" />
+        <style>
+            :root {
+                --bg: #ffffff;
+                --text: #0a0a0a;
+                --muted: #f5f7fb;
+                --line: #e6ebf2;
+                --brand: #1e88e5;
+                --accent: #00bfa6;
+                --focus: #ffbf47;
+                --radius: 16px;
+                --shadow: 0 10px 30px rgba(2, 21, 59, 0.08);
+                --container: 1120px;
+            }
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --bg: #0b1220;
+                    --text: #e8eef7;
+                    --muted: #0f1a2e;
+                    --line: #1f2a3f;
+                    --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+                }
+            }
+            * {
+                box-sizing: border-box;
+            }
+            html,
+            body {
+                height: 100%;
+            }
+            body {
+                margin: 0;
+                background: var(--bg);
+                color: var(--text);
+                font:
+                    16px/1.55 system-ui,
+                    -apple-system,
+                    Segoe UI,
+                    Roboto,
+                    Inter,
+                    Helvetica,
+                    Arial,
+                    sans-serif;
+            }
+            a {
+                color: var(--brand);
+                text-decoration: none;
+            }
+            a:focus-visible,
+            button:focus-visible {
+                outline: 3px solid var(--focus);
+                outline-offset: 2px;
+            }
+            .container {
+                width: 100%;
+                max-width: var(--container);
+                margin-inline: auto;
+                padding-inline: 20px;
+            }
+            .stack {
+                display: grid;
+                gap: 16px;
+            }
 
-    <style>
-        /* General Reset and Styling */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-            line-height: 1.6;
-            text-align: center;
-        }
+            .skip {
+                position: absolute;
+                left: -9999px;
+                top: auto;
+                width: 1px;
+                height: 1px;
+                overflow: hidden;
+            }
+            .skip:focus {
+                left: 16px;
+                top: 12px;
+                width: auto;
+                height: auto;
+                padding: 8px 12px;
+                background: var(--focus);
+                color: #222;
+                border-radius: 8px;
+                z-index: 9999;
+            }
 
-        /* Container for content */
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 20px;
-            background: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
+            header {
+                position: sticky;
+                top: 0;
+                backdrop-filter: saturate(180%) blur(8px);
+                background: color-mix(in srgb, var(--bg) 86%, transparent);
+                border-bottom: 1px solid var(--line);
+                z-index: 10;
+            }
+            .nav {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                height: 68px;
+            }
+            .brand {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-weight: 700;
+                letter-spacing: 0.2px;
+            }
+            .brand-mark {
+                width: 28px;
+                height: 28px;
+                border-radius: 8px;
+                background: linear-gradient(
+                    135deg,
+                    var(--brand),
+                    var(--accent)
+                );
+                box-shadow: var(--shadow);
+            }
+            .nav-links {
+                display: flex;
+                align-items: center;
+                gap: 18px;
+            }
+            .nav a {
+                color: var(--text);
+                opacity: 0.9;
+            }
 
-        h1 {
-            color: #007bff; /* A prominent non-profit blue */
-            margin-bottom: 0.5em;
-        }
-        
-        h2 {
-            color: #555;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-top: 20px;
-        }
+            .btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 12px 18px;
+                border-radius: 12px;
+                border: 1px solid var(--line);
+                background: #fff;
+                color: #0b1532;
+                font-weight: 600;
+                box-shadow: var(--shadow);
+                transition: transform 0.08s ease;
+            }
+            .btn:hover {
+                transform: translateY(-1px);
+            }
+            .btn.primary {
+                background: linear-gradient(
+                    135deg,
+                    var(--brand),
+                    var(--accent)
+                );
+                color: #fff;
+                border: none;
+            }
+            .btn.ghost {
+                background: transparent;
+                border-color: var(--line);
+                color: var(--text);
+                box-shadow: none;
+            }
 
-        p {
-            margin-bottom: 15px;
-        }
+            .hero {
+                padding: 72px 0 32px;
+                background:
+                    radial-gradient(
+                        1200px 600px at 0% -10%,
+                        color-mix(in srgb, var(--brand) 18%, transparent),
+                        transparent
+                    ),
+                    radial-gradient(
+                        800px 400px at 100% 0%,
+                        color-mix(in srgb, var(--accent) 16%, transparent),
+                        transparent
+                    );
+            }
+            .hero .content {
+                display: grid;
+                gap: 20px;
+                max-width: 860px;
+            }
+            h1 {
+                font-size: clamp(32px, 5vw, 52px);
+                line-height: 1.08;
+                margin: 0;
+            }
+            .tagline {
+                font-size: clamp(16px, 2.2vw, 20px);
+                opacity: 0.88;
+            }
+            .hero-ctas {
+                display: flex;
+                gap: 12px;
+                flex-wrap: wrap;
+                margin-top: 8px;
+            }
 
-        /* DONATE BUTTON STYLING (UX Focus) */
-        .donation-section {
-            margin: 40px 0;
-            padding: 20px;
-            background-color: #e6f0ff; /* Light background to make button pop */
-            border-radius: 6px;
-            border: 1px solid #cce0ff;
-        }
+            .proof {
+                padding: 22px 0;
+                border-top: 1px solid var(--line);
+                border-bottom: 1px solid var(--line);
+                background: var(--muted);
+            }
+            .proof .row {
+                display: grid;
+                grid-template-columns: repeat(6, minmax(100px, 1fr));
+                gap: 16px;
+                align-items: center;
+            }
+            .logo {
+                height: 36px;
+                border-radius: 10px;
+                background: linear-gradient(180deg, #fff, #f2f5fb);
+                border: 1px solid var(--line);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #7b8aa4;
+                font-weight: 600;
+            }
 
-        .donate-button {
-            /* The actual button/link element */
-            display: inline-block;
-            padding: 15px 30px;
-            font-size: 1.25em;
-            font-weight: bold;
-            color: white;
-            background-color: #009cde; /* PayPal/high-contrast blue for trust */
-            text-decoration: none;
-            border-radius: 25px;
-            transition: background-color 0.3s ease, transform 0.1s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+            .section {
+                padding: 56px 0;
+            }
+            .section h2 {
+                margin: 0 0 12px;
+                font-size: clamp(22px, 3.2vw, 32px);
+            }
+            .section p.lead {
+                margin: 0 0 22px;
+                opacity: 0.85;
+            }
+            .grid-3 {
+                display: grid;
+                gap: 16px;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+            @media (max-width: 900px) {
+                .grid-3 {
+                    grid-template-columns: 1fr;
+                }
+                .proof .row {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
 
-        .donate-button:hover {
-            background-color: #007bb6; /* Darker on hover */
-            transform: translateY(-2px);
-        }
+            .card {
+                padding: 20px;
+                background: #fff;
+                border: 1px solid var(--line);
+                border-radius: var(--radius);
+                box-shadow: var(--shadow);
+            }
+            .card h3 {
+                margin: 0 0 8px;
+                font-size: 20px;
+            }
+            .card p {
+                margin: 0;
+                opacity: 0.85;
+            }
 
-        .donate-button:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+            .impact {
+                background: var(--muted);
+                border-top: 1px solid var(--line);
+                border-bottom: 1px solid var(--line);
+            }
+            .stats {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 16px;
+            }
+            .stat {
+                padding: 22px;
+                text-align: center;
+                border: 1px solid var(--line);
+                border-radius: var(--radius);
+                background: #fff;
+                box-shadow: var(--shadow);
+            }
+            .stat b {
+                font-size: clamp(24px, 4vw, 36px);
+                display: block;
+            }
 
-        /* Footer for policy clarity */
-        footer {
-            margin-top: 30px;
-            font-size: 0.8em;
-            color: #888;
-        }
+            .cta {
+                padding: 56px 0;
+                text-align: center;
+            }
+            .cta .panel {
+                padding: 28px;
+                border: 1px solid var(--line);
+                border-radius: calc(var(--radius) + 6px);
+                background: linear-gradient(
+                    135deg,
+                    color-mix(in srgb, var(--brand) 7%, #fff),
+                    color-mix(in srgb, var(--accent) 7%, #fff)
+                );
+                box-shadow: var(--shadow);
+            }
 
-        footer p {
-            padding: 5px;
-        }
+            footer {
+                padding: 36px 0;
+                border-top: 1px solid var(--line);
+            }
+            .foot {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+            .fine {
+                opacity: 0.7;
+                font-size: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="#main" class="skip">Skip to content</a>
+        <header>
+            <div class="container nav" role="navigation" aria-label="Primary">
+                <div class="brand" aria-label="ISI home">
+                    <div class="brand-mark" aria-hidden="true"></div>
+                    <span>Innovative Solutions Initiative (ISI)</span>
+                </div>
+                <nav class="nav-links">
+                    <a href="#programs">Programs</a>
+                    <a href="#about">About</a>
+                    <a
+                        class="btn primary"
+                        href="https://www.paypal.com/donate/?hosted_button_id=LJ8RKUNZ34TZU"
+                        >Donate</a
+                    >
+                </nav>
+            </div>
+        </header>
 
-    </style>
-</head>
-<body>
+        <main id="main">
+            <section class="hero">
+                <div class="container content">
+                    <h1>Unified care. Smarter tools. Better lives.</h1>
+                    <p class="tagline">
+                        We are building an intelligent, secure, and connected
+                        platform that unifies healthcare, education, and human
+                        services. ISI empowers individuals, families, and
+                        professionals with real‑time insights, collaborative
+                        tools, and personalized pathways for better outcomes.
+                    </p>
+                    <div class="hero-ctas">
+                        <a
+                            class="btn primary"
+                            href="https://www.paypal.com/donate/?hosted_button_id=LJ8RKUNZ34TZU"
+                            >Donate</a
+                        >
+                        <a class="btn ghost" href="#about">How we help</a>
+                    </div>
+                </div>
+            </section>
 
-    <div class="container">
-        
-        <h1>Innovative Solutions Initiative</h1>
-        <p>A 501(c)(3) Non-Profit Organization</p>
+            <section class="proof" aria-label="Organizations we work with">
+                <div class="container">
+                    <div class="row" role="list">
+                        <div
+                            class="logo"
+                            role="listitem"
+                            aria-label="Partner logo placeholder"
+                        >
+                            Health System
+                        </div>
+                        <div
+                            class="logo"
+                            role="listitem"
+                            aria-label="Partner logo placeholder"
+                        >
+                            Clinic
+                        </div>
+                        <div
+                            class="logo"
+                            role="listitem"
+                            aria-label="Partner logo placeholder"
+                        >
+                            School
+                        </div>
+                        <div
+                            class="logo"
+                            role="listitem"
+                            aria-label="Partner logo placeholder"
+                        >
+                            Research
+                        </div>
+                        <div
+                            class="logo"
+                            role="listitem"
+                            aria-label="Partner logo placeholder"
+                        >
+                            Public Health
+                        </div>
+                        <div
+                            class="logo"
+                            role="listitem"
+                            aria-label="Partner logo placeholder"
+                        >
+                            Foundation
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-        <h2>Our Mission</h2>
-        <p>
-            Welcome to the Innovative Solutions Initiative. Our goal is to drive meaningful, sustainable change in our community through collaboration, technology, and grassroots effort. We focus on areas like education, environmental sustainability, and local infrastructure projects.
-        </p>
-        <p>
-            <em>(Replace this placeholder text with your organization's actual mission and key projects.)</em>
-        </p>
+            <section class="section" id="programs">
+                <div class="container stack">
+                    <h2>What we deliver</h2>
+                    <p class="lead">
+                        Two core products accelerate coordinated care while
+                        protecting privacy.
+                    </p>
+                    <div class="grid-3">
+                        <article class="card">
+                            <h3>ORIA — clinical AI support</h3>
+                            <p>
+                                AI‑generated IEPs and care recommendations,
+                                document summaries, anomaly detection, and
+                                real‑time decision support to reduce errors and
+                                speed onboarding.
+                            </p>
+                        </article>
+                        <article class="card">
+                            <h3>MyEMR — patient‑facing access</h3>
+                            <p>
+                                Patient‑controlled access with role‑based
+                                permissions, consent‑based sharing, and
+                                emergency access protocol across mobile and web.
+                            </p>
+                        </article>
+                        <article class="card">
+                            <h3>Interoperable by design</h3>
+                            <p>
+                                FHIR/HL7, OAuth 2.0, Bulk Data, and CDS Hooks
+                                for secure integration with EHRs and school
+                                information systems.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
 
-        <div class="donation-section">
-            <h2>Help Us Make a Difference Today</h2>
-            <p>
-                Your generous contribution allows us to fund essential projects and expand our reach. Every dollar directly supports our mission.
-            </p>
-            
-            <a 
-                href="https://www.paypal.com/donate/?hosted_button_id=LJ8RKUNZ34TZU" 
-                class="donate-button" 
-                target="_blank" 
-                rel="noopener noreferrer"
+            <section
+                class="section impact"
+                aria-label="Built for compliance and scale"
             >
-                DONATE SECURELY VIA PAYPAL
-            </a>
-            <p style="margin-top: 15px; font-size: 0.9em; color: #555;">
-                *You will be securely redirected to PayPal to complete your donation.
-            </p>
-        </div>
+                <div class="container">
+                    <div class="stats">
+                        <div class="stat">
+                            <b>Compliant</b> HIPAA · FERPA · GDPR
+                        </div>
+                        <div class="stat">
+                            <b>Interoperable</b> FHIR · HL7 · CDS Hooks
+                        </div>
+                        <div class="stat">
+                            <b>Patent‑pending</b> Long‑term scalable
+                            architecture
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-        <h2>What We're Working On</h2>
-        <ul>
-            <li>Community Technology Workshop (Q4 2025)</li>
-            <li>Local Park Clean-Up Project (Ongoing)</li>
-            <li>Youth Mentorship Program (Year-Round)</li>
-        </ul>
+            <section class="section" id="about">
+                <div class="container stack">
+                    <h2>How we help</h2>
+                    <p class="lead">
+                        We address fragmented care by unifying data,
+                        streamlining transitions, and eliminating manual
+                        bottlenecks so teams can focus on people, not paperwork.
+                    </p>
+                    <p>
+                        Ideal partners include healthcare systems, private
+                        practices, educators, parents, and individuals. We
+                        support pilots, implementation, and training for clinics
+                        and schools serving children and families.
+                    </p>
+                    <div>
+                        <a
+                            class="btn"
+                            href="mailto:hello@ignitecollectiveagency.com?subject=ISI%20implementation%20request"
+                            >Request implementation</a
+                        >
+                        <a class="btn ghost" href="[GITHUB_OR_DOCS_URL]"
+                            >View docs</a
+                        >
+                    </div>
+                </div>
+            </section>
 
-    </div>
+            <section class="cta">
+                <div class="container">
+                    <div class="panel">
+                        <h2>Partner with ISI</h2>
+                        <p class="tagline">
+                            Your support helps deliver connected, compassionate
+                            care tools to the families who need them.
+                        </p>
+                        <div class="hero-ctas" style="justify-content: center">
+                            <a
+                                class="btn primary"
+                                href="https://www.paypal.com/donate/?hosted_button_id=LJ8RKUNZ34TZU"
+                                >Donate</a
+                            >
+                            <a
+                                class="btn"
+                                href="mailto:hello@ignitecollectiveagency.com?subject=Volunteer"
+                                >Volunteer</a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
 
-    <footer>
-        <p>&copy; <script>document.write(new Date().getFullYear())</script> Innovative Solutions Initiative. All rights reserved.</p>
-        <p>This website is hosted on GitHub Pages. Donations are processed securely by PayPal.</p>
-    </footer>
+        <footer>
+            <div class="container foot">
+                <div class="brand">
+                    <div class="brand-mark" aria-hidden="true"></div>
+                    <span>Innovative Solutions Initiative (ISI)</span>
+                </div>
+                <div class="fine">
+                    <span
+                        >© <span id="y"></span> Innovative Solutions
+                        Initiative</span
+                    >
+                    <span>
+                        · <a href="/privacy">Privacy</a> ·
+                        <a href="mailto:hello@ignitecollectiveagency.com"
+                            >Contact</a
+                        >
+                        · <span aria-label="Phone">(850) 460‑0741</span></span
+                    >
+                </div>
+            </div>
+        </footer>
 
-</body>
+        <script>
+            document.getElementById("y").textContent = new Date().getFullYear();
+        </script>
+    </body>
 </html>
